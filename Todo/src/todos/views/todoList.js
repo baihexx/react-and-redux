@@ -7,20 +7,10 @@ import { FilterTypes } from '../../constant';
 
 class TodoList extends Component {
   render() {
-    let todos = this.props.todos.slice(0)
-    if (this.props.filter === FilterTypes.COMPLETED) {
-      todos = todos.filter(item => {
-        return item.completed
-      })
-    } else if (this.props.filter === FilterTypes.UNCOMPLETED) {
-      todos = todos.filter(item => {
-        return !item.completed
-      })
-    }
     return (
       <ul>
         {
-          todos.map(item => (
+          this.props.todos.map(item => (
             <TodoItem key={item.id}
               text={item.text}
               completed={item.completed}
@@ -38,11 +28,23 @@ TodoList.propTypes = {
   todos: PropTypes.array.isRequired
 }
 
-// export default TodoList
+const setVislbleTodos = (todos, filter) => {
+  if (filter === FilterTypes.COMPLETED) {
+    return todos.filter(item => {
+      return item.completed
+    })
+  } else if (filter === FilterTypes.UNCOMPLETED) {
+    return todos.filter(item => {
+      return !item.completed
+    })
+  } else {
+    return todos
+  }
+}
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos,
+    todos: setVislbleTodos(state.todos, state.filter),
     filter: state.filter
   }
 }
