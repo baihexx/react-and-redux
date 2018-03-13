@@ -1,0 +1,11 @@
+.completed {
+  color: blue;
+}
+
+.uncompleted {
+  color: red;
+}
+
+.remove-btn {
+  margin-left: 10px;
+}

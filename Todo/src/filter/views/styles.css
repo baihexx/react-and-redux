@@ -1,0 +1,17 @@
+.filters .filter-type {
+  padding: 0 5px;
+  color: blue;
+  cursor: pointer;
+}
+
+.filter {
+  padding: 0 10px;
+}
+
+.filter.selected {
+  color: red;
+}
+
+.filter.unselected {
+  color: blue;
+}
